@@ -54,6 +54,7 @@
             lblWydZl = new Label();
             lblOszZl = new Label();
             btnEksp = new Button();
+            btnImp = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -275,18 +276,28 @@
             // 
             // btnEksp
             // 
-            btnEksp.Location = new Point(89, 491);
+            btnEksp.Location = new Point(106, 450);
             btnEksp.Name = "btnEksp";
             btnEksp.Size = new Size(139, 23);
             btnEksp.TabIndex = 16;
             btnEksp.Text = "Eksportuj do XML";
             btnEksp.UseVisualStyleBackColor = true;
             // 
+            // btnImp
+            // 
+            btnImp.Location = new Point(106, 491);
+            btnImp.Name = "btnImp";
+            btnImp.Size = new Size(139, 23);
+            btnImp.TabIndex = 17;
+            btnImp.Text = "Importuj z CSV";
+            btnImp.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1174, 616);
+            Controls.Add(btnImp);
             Controls.Add(btnEksp);
             Controls.Add(lblOszZl);
             Controls.Add(lblWydZl);
@@ -336,5 +347,6 @@
         private Label lblWydZl;
         private Label lblOszZl;
         private Button btnEksp;
+        private Button btnImp;
     }
 }
