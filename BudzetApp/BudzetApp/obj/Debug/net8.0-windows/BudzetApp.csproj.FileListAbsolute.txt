@@ -15,3 +15,37 @@ C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-wind
 C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.genruntimeconfig.cache
 C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\ref\BudzetApp.dll
 C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.sourcelink.json
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.exe
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.deps.json
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.runtimeconfig.json
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.dll
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.pdb
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.Form1.resources
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.csproj.GenerateResource.cache
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.AssemblyInfoInputs.cache
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.AssemblyInfo.cs
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.csproj.CoreCompileInputs.cache
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.sourcelink.json
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.dll
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\refint\BudzetApp.dll
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.pdb
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.genruntimeconfig.cache
+C:\Users\Rozmys\Desktop\ZPO przed comit\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\ref\BudzetApp.dll
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.exe
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.deps.json
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.runtimeconfig.json
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.dll
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\bin\Debug\net8.0-windows\BudzetApp.pdb
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.Form1.resources
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.csproj.GenerateResource.cache
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.AssemblyInfoInputs.cache
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.AssemblyInfo.cs
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.csproj.CoreCompileInputs.cache
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.sourcelink.json
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.dll
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\refint\BudzetApp.dll
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.pdb
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.genruntimeconfig.cache
+C:\Users\Rozmys\Desktop\Github\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\ref\BudzetApp.dll

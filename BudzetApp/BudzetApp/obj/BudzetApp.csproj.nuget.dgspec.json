@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rozmys\\Desktop\\ZPO\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj": {}
+    "C:\\Users\\Rozmys\\Desktop\\Github\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rozmys\\Desktop\\ZPO\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj": {
+    "C:\\Users\\Rozmys\\Desktop\\Github\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rozmys\\Desktop\\ZPO\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj",
+        "projectUniqueName": "C:\\Users\\Rozmys\\Desktop\\Github\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj",
         "projectName": "BudzetApp",
-        "projectPath": "C:\\Users\\Rozmys\\Desktop\\ZPO\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj",
+        "projectPath": "C:\\Users\\Rozmys\\Desktop\\Github\\ZPO-164425\\BudzetApp\\BudzetApp\\BudzetApp.csproj",
         "packagesPath": "C:\\Users\\Rozmys\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rozmys\\Desktop\\ZPO\\ZPO-164425\\BudzetApp\\BudzetApp\\obj\\",
+        "outputPath": "C:\\Users\\Rozmys\\Desktop\\Github\\ZPO-164425\\BudzetApp\\BudzetApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

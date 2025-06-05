@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblKwota = new Label();
             Kwota = new TextBox();
             lblKat = new Label();
@@ -41,11 +40,6 @@
             lblTytul = new Label();
             label1 = new Label();
             dataGridView1 = new DataGridView();
-            colData = new DataGridViewTextBoxColumn();
-            colKat = new DataGridViewTextBoxColumn();
-            colOpis = new DataGridViewTextBoxColumn();
-            colKwota = new DataGridViewTextBoxColumn();
-            colUsun = new DataGridViewButtonColumn();
             btnDodaj = new Button();
             lblPrzy = new Label();
             lblWyd = new Label();
@@ -146,61 +140,27 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colData, colKat, colOpis, colKwota, colUsun });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Location = new Point(443, 49);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.Size = new Size(693, 465);
             dataGridView1.TabIndex = 8;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // colData
-            // 
-            colData.HeaderText = "Data";
-            colData.Name = "colData";
-            // 
-            // colKat
-            // 
-            colKat.HeaderText = "Kategoria";
-            colKat.Name = "colKat";
-            // 
-            // colOpis
-            // 
-            colOpis.HeaderText = "Opis";
-            colOpis.Name = "colOpis";
-            colOpis.Width = 300;
-            // 
-            // colKwota
-            // 
-            colKwota.HeaderText = "Kwota";
-            colKwota.Name = "colKwota";
-            // 
-            // colUsun
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.Red;
-            dataGridViewCellStyle2.ForeColor = Color.Red;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Maroon;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            colUsun.DefaultCellStyle = dataGridViewCellStyle2;
-            colUsun.HeaderText = "Usuń";
-            colUsun.Name = "colUsun";
-            colUsun.Width = 50;
             // 
             // btnDodaj
             // 
@@ -334,11 +294,6 @@
         private Label lblTytul;
         private Label label1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn colData;
-        private DataGridViewTextBoxColumn colKat;
-        private DataGridViewTextBoxColumn colOpis;
-        private DataGridViewTextBoxColumn colKwota;
-        private DataGridViewButtonColumn colUsun;
         private Button btnDodaj;
         private Label lblPrzy;
         private Label lblWyd;
@@ -348,5 +303,6 @@
         private Label lblOszZl;
         private Button btnEksp;
         private Button btnImp;
+
     }
 }
