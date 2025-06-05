@@ -2,6 +2,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace BudzetApp
 {
@@ -148,4 +149,107 @@ namespace BudzetApp
         }
 
      }
+
+    public static class Ob³ugaPliku
+    {
+        public static void ZapiszTransakcjeDoPliku(List<Transakcja> transakcje, string sciezka)
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Transakcja>));
+                using (var writer = new StreamWriter(sciezka))
+                {
+                    serializer.Serialize(writer, transakcje);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"B³¹d podczas zapisywania do pliku: {ex.Message}");
+            }
+        }
+
+        public static List<Transakcja> WczytajTransakcjeZCSV(string sciezka)
+        {
+            var lista = new List<Transakcja>();
+            try
+            {
+                using (var reader = new StreamReader(sciezka))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        var parts = line.Split(',');
+                        if (parts.Length < 5) continue; // Sprawdzenie poprawnoœci danych
+                        var transakcja = new Transakcja(parts[0], parts[1], decimal.Parse(parts[2]), DateTime.Parse(parts[3]), parts[4]);
+                        lista.Add(transakcja);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"B³¹d podczas wczytywania z pliku: {ex.Message}");
+            }
+            return lista;
+        }
+
+    }
+
+    public class Config
+    {
+        private static Config _instance;
+        private static readonly object _lock = new object();
+
+        public string Waluta { get; set; } = "PLN";
+
+        private Config() { }
+
+        public static Config Instance
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = WczytajZPliku("config.xml") ?? new Config();
+                    }
+                    return _instance;
+                }
+            }
+        }
+
+        public static Config WczytajZPliku(string sciezka)
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Config));
+                using (var reader = new StreamReader(sciezka))
+                {
+                    return (Config)serializer.Deserialize(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"B³¹d podczas wczytywania konfiguracji: {ex.Message}");
+                return null;
+            }
+        }
+
+        public void ZapiszDoPliku(string sciezka)
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Config));
+                using (var writer = new StreamWriter(sciezka))
+                {
+                    serializer.Serialize(writer, this);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"B³¹d podczas zapisywania konfiguracji: {ex.Message}");
+            }
+        }
+    }
+
 }
