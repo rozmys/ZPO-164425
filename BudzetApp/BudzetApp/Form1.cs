@@ -53,32 +53,42 @@ namespace BudzetApp
         }
     }
 
-    public class Transakcja
+    public abstract class OperacjaFinansowa
+    {
+        public decimal Kwota { get; set; }
+        public DateTime Data { get; set; }
+        public string Opis { get; set; }
+
+        public abstract string GetTypOperacji();
+    }
+
+
+    public class Transakcja: OperacjaFinansowa
     {
         public string Kategoria { get; set; }
         public string Typ { get; set; }
-        public decimal Kwota { get; set; }
-        public DateTime Data { get; set; }
 
-        public bool SprKwota(decimal kwota)
-        {
-            return Kwota >= 0;
-        }
 
-        public Transakcja(string kategoria, string typ, decimal kwota, DateTime data)
+        public Transakcja(string kategoria, string typ, decimal kwota, DateTime data, string opis)
         {
             Kategoria = kategoria;
             Typ = typ;
             Kwota = kwota;
             Data = data;
+            Opis = opis;
+        }
+
+        public override string GetTypOperacji()
+        {
+            return Typ;
         }
 
 
     }
 
-    public class ArgumentException: Exception
+    public class BudzetException: Exception
     {
-        public ArgumentException(string message) : base(message)
+        public BudzetException(string message) : base(message)
         {
         }
     }
@@ -102,6 +112,39 @@ namespace BudzetApp
             if (transakcje == null || string.IsNullOrWhiteSpace(transakcja.Kategoria) || transakcja.Kwota == 0){
                 throw new ArgumentException("Transakcja nie mo¿e byæ pusta lub mieæ nieprawid³owych danych.");
             }
+
+            transakcje.Add(transakcja);
+
+        }
+
+        public void UsunTransakcje(int id)
+        {
+            if (id < 0 || id >= transakcje.Count)
+            {
+                throw new BudzetException("Nieprawid³owy indeks.");
+            }
+
+            transakcje.RemoveAt(id);
+        }
+
+        public List<Transakcja> PobierzTransakcje()
+        {
+            return transakcje;
+        }
+
+        public decimal GetPrzychody()
+        {
+            return transakcje.Where(t => t.Typ == "Przychód").Sum(t => t.Kwota);
+        }
+
+        public decimal GetWydatki()
+        {
+            return transakcje.Where(t => t.Typ == "Wydatek").Sum(t => t.Kwota);
+        }
+
+        public decimal GetOsz()
+        {
+            return GetPrzychody() - GetWydatki();
         }
 
      }

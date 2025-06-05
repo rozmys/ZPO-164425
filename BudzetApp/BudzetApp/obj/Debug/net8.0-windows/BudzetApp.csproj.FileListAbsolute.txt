@@ -14,3 +14,4 @@ C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-wind
 C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.pdb
 C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.genruntimeconfig.cache
 C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\ref\BudzetApp.dll
+C:\Users\Rozmys\Desktop\ZPO\ZPO-164425\BudzetApp\BudzetApp\obj\Debug\net8.0-windows\BudzetApp.sourcelink.json
