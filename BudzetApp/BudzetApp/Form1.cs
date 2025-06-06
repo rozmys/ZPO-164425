@@ -18,8 +18,17 @@ namespace BudzetApp
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            string configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.xml");
+            var config = Config.WczytajZPliku(configPath);
+            if (config != null)
+                Config.Instance.Waluta = config.Waluta;
             OdswiezWidok();
             btnDodaj.Click += btnDodaj_Click;
+            btnEksp.Click += btnEksp_Click;
+            btnImp.Click += btnImp_Click;
+            btnClr.Click += btnClr_Click;
         }
 
         private void label1_Click(object sender, EventArgs e) { }
@@ -32,23 +41,21 @@ namespace BudzetApp
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridView1.Columns["colUsun"].Index && e.RowIndex >= 0)
+            string waluta = Config.Instance.Waluta;
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            string? kategoria = row.Cells["colKat"].Value?.ToString();
+            string? kwotaStr = row.Cells["colKwota"].Value?.ToString();
+
+            if (decimal.TryParse(kwotaStr, out decimal kwota))
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                string? kategoria = row.Cells["colKat"].Value?.ToString();
-                string? kwotaStr = row.Cells["colKwota"].Value?.ToString();
-
-                if (decimal.TryParse(kwotaStr, out decimal kwota))
-                {
-                    if (kategoria == "Przychody")
-                        przychody -= kwota;
-                    else if (kategoria == "Wydatki")
-                        wydatki -= kwota;
-                }
-
-                dataGridView1.Rows.RemoveAt(e.RowIndex);
-                AktualizujPodsumowanie();
+                if (kategoria == "Przychody")
+                    przychody -= kwota;
+                else if (kategoria == "Wydatki")
+                    wydatki -= kwota;
             }
+
+            dataGridView1.Rows.RemoveAt(e.RowIndex);
+            AktualizujPodsumowanie();
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -89,9 +96,11 @@ namespace BudzetApp
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = budzetManager.PobierzTransakcje();
 
-            lblPrzyZl.Text = $"{budzetManager.GetPrzychody()}";
-            lblWydZl.Text = $"{budzetManager.GetWydatki()}";
-            lblOszZl.Text = $"{budzetManager.GetOsz()}";
+            string waluta = Config.Instance.Waluta;
+
+            lblPrzyZl.Text = $"{budzetManager.GetPrzychody():0.00} {waluta}";
+            lblWydZl.Text = $"{budzetManager.GetWydatki():0.00} {waluta}";
+            lblOszZl.Text = $"{budzetManager.GetOsz():0.00} {waluta}";
         }
 
         private void AktualizujPodsumowanie()
@@ -116,9 +125,63 @@ namespace BudzetApp
 
             oszczednosci = przychody - wydatki;
 
-            lblPrzy.Text = $"Przychody: {przychody:C}";
-            lblWyd.Text = $"Wydatki: {wydatki:C}";
-            lblOsz.Text = $"Oszczêdnoœci: {oszczednosci:C}";
+            string waluta = Config.Instance.Waluta;
+            lblPrzyZl.Text = $"{przychody:0.00} {waluta}";
+            lblWydZl.Text = $"{wydatki:0.00} {waluta}";
+            lblOszZl.Text = $"{oszczednosci:0.00} {waluta}";
+        }
+
+        private void btnEksp_Click(object sender, EventArgs e)
+        {
+            using (var dlg = new SaveFileDialog())
+            {
+                dlg.Filter = "Pliki XML (*.xml)|*.xml";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        Ob³ugaPliku.ZapiszTransakcjeDoXML(budzetManager.PobierzTransakcje(), dlg.FileName);
+                        MessageBox.Show("Eksport zakoñczony!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"B³¹d eksportu: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        private void btnImp_Click(object sender, EventArgs e)
+        {
+            using (var dlg = new OpenFileDialog())
+            {
+                dlg.Filter = "Pliki XML (*.xml)|*.xml";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var lista = Ob³ugaPliku.WczytajTransakcjeZXML(dlg.FileName);
+                        foreach (var t in lista)
+                            budzetManager.DodajTransakcje(t);
+                        OdswiezWidok();
+                        MessageBox.Show("Import zakoñczony!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"B³¹d importu: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        private void btnClr_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Czy na pewno chcesz usun¹æ wszystkie transakcje?", "Potwierdzenie", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                budzetManager.UsunWszystkieTransakcje();
+                OdswiezWidok();
+                MessageBox.Show("Wszystkie transakcje zosta³y usuniête.");
+            }
         }
     }
 
@@ -139,6 +202,8 @@ namespace BudzetApp
     public class Transakcja : OperacjaFinansowa
     {
         public string Kategoria { get; set; }
+
+        public Transakcja() : base(0, DateTime.Now, "") { }
 
         public Transakcja(string kategoria, decimal kwota, DateTime data, string? opis)
             : base(kwota, data, opis)
@@ -169,10 +234,9 @@ namespace BudzetApp
             transakcje.Add(transakcja);
         }
 
-        public void UsunTransakcje(int id)
+        public void UsunWszystkieTransakcje()
         {
-            if (id >= 0 && id < transakcje.Count)
-                transakcje.RemoveAt(id);
+            transakcje.Clear();
         }
 
         public List<Transakcja> PobierzTransakcje()
@@ -198,35 +262,22 @@ namespace BudzetApp
 
     public static class Ob³ugaPliku
     {
-        public static void ZapiszTransakcjeDoPliku(List<Transakcja> transakcje, string sciezka)
+        public static void ZapiszTransakcjeDoXML(List<Transakcja> transakcje, string sciezka)
         {
+            var serializer = new XmlSerializer(typeof(List<Transakcja>));
             using (var writer = new StreamWriter(sciezka))
             {
-                foreach (var t in transakcje)
-                {
-                    writer.WriteLine($"{t.Kategoria};{t.Kwota};{t.Data:yyyy-MM-dd};{t.Opis}");
-                }
+                serializer.Serialize(writer, transakcje);
             }
         }
 
-        public static List<Transakcja> WczytajTransakcjeZCSV(string sciezka)
+        public static List<Transakcja> WczytajTransakcjeZXML(string sciezka)
         {
-            var lista = new List<Transakcja>();
+            var serializer = new XmlSerializer(typeof(List<Transakcja>));
             using (var reader = new StreamReader(sciezka))
             {
-                string? line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var parts = line.Split(';');
-                    if (parts.Length >= 4 &&
-                        decimal.TryParse(parts[1], out decimal kwota) &&
-                        DateTime.TryParse(parts[2], out DateTime data))
-                    {
-                        lista.Add(new Transakcja(parts[0], kwota, data, parts[3]));
-                    }
-                }
+                return (List<Transakcja>)serializer.Deserialize(reader);
             }
-            return lista;
         }
     }
 
@@ -234,7 +285,13 @@ namespace BudzetApp
     {
         private static Config? _instance;
         private static readonly object _lock = new object();
+
+        // Dodaj atrybuty XML
+        [XmlElement("Waluta")]
         public string Waluta { get; set; } = "PLN";
+
+        // Konstruktor bezparametrowy wymagany przez XmlSerializer
+        public Config() { }
 
         public static Config Instance
         {
@@ -268,13 +325,5 @@ namespace BudzetApp
             }
         }
 
-        public void ZapiszDoPliku(string sciezka)
-        {
-            using (var writer = new StreamWriter(sciezka))
-            {
-                var serializer = new XmlSerializer(typeof(Config));
-                serializer.Serialize(writer, this);
-            }
-        }
     }
 }
